@@ -5,58 +5,79 @@
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<title>Rock Paper Scissors</title>
 		<link rel="stylesheet" href="style.css" />
+		<link rel="icon" type="image/png" href="./assets/HW.png" />
+
 		<script defer src="https://cdn.tailwindcss.com"></script>
 		<script defer src="script.js"></script>
+		<link rel="preconnect" href="https://fonts.googleapis.com" />
+		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+		<link
+			href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;1,100;1,200;1,300;1,400;1,500;1,600;1,700&family=Inter:ital,opsz,wght@0,14..32,100..900;1,14..32,100..900&family=Nova+Square&family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+			rel="stylesheet"
+		/>
 	</head>
 	<body class="min-h-screen bg-gray-800 bg-custom relative">
-		<div class="min-h-fit text-white rounded-lg p-8 mx-auto py-20">
-			<h1 class="text-6xl font-bold mb-4 text-center">Rock Paper Scissors</h1>
-			<div class="grid grid-cols-2 my-10">
-				<div class="flex justify-center items-center p-4 rounded-lg">
+		<header>
+			<div
+				class="mx-auto flex h-16 items-center gap-8 px-4 sm:px-6 lg:px-8 justify-between"
+			>
+				<a class="block text-teal-600" href="#">
+					<span class="sr-only">Home</span>
+					<img src="./assets/HW.png" alt="logo" class="h-10 w-10">
+				</a>
+
+				<div class="flex items-center justify-end md:justify-between">
+					<div class="flex items-center gap-4">
+						<button id="reset-button" class="py-2 rounded text-lg">
+							<img src="./assets/img/reset.png" alt="reset btn" class="h-10 w-10" />
+						</button>
+					</div>
+				</div>
+			</div>
+		</header>
+		<div class="min-h-fit text-white rounded-lg mx-auto">
+			<h1 class="text-6xl font-bold mb-4 text-center title my-4">
+				Rock Paper Scissors
+			</h1>
+			<div class="grid grid-cols-2 my-10 gap-20">
+				<div class="flex justify-start items-center rounded-lg">
 					<div class="text-center space-y-5">
 						<p class="text-xl">You</p>
 						<img
 							id="user-image"
-							src="./assets/img/rock.png"
-							class="w-[40vh] h-[40vh] mx-10"
+							src="./assets/img/rock_user.png"
+							class="h-[40vh] w-[45vw]"
 						/>
 					</div>
 				</div>
-				<div class="flex justify-center items-center p-4 rounded-lg">
+				<div class="flex justify-end items-center rounded-lg">
 					<div class="text-center space-y-5">
 						<p class="text-xl">Opponent</p>
 						<img
 							id="computer-image"
-							src="./assets/img/rock.png"
-							class="w-[40vh] h-[40vh] mx-10"
+							src="./assets/img/rock_comp.png"
+							class="h-[40vh] w-[45vw]"
 						/>
 					</div>
 				</div>
 			</div>
 		</div>
+		<div class="flex justify-center gap-4 mt-4 text-white">
+			<p class="text-xl">Your Score: <span id="user-score">0</span></p>
+			<p class="text-xl">Computer Score: <span id="computer-score">0</span></p>
+		</div>
 
 		<p
 			id="result"
-			class="absolute top-1/2 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold text-white bg-black px-6 py-2 rounded-lg shadow-md"
+			class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold text-white bg-black px-6 py-2 rounded-lg shadow-md"
 		></p>
 
 		<div class="flex justify-center gap-4 mt-4 text-white">
-			<button
-				id="rock"
-				class="btn-custom bg-black px-6 py-2 rounded text-lg hover:bg-neutral-800"
-			>
-				Rock
-			</button>
-			<button
-				id="paper"
-				class="btn-custom bg-black px-6 py-2 rounded text-lg hover:bg-neutral-800"
-			>
+			<button id="rock" class="btn-custom px-6 py-2 rounded text-lg">Rock</button>
+			<button id="paper" class="btn-custom px-6 py-2 rounded text-lg">
 				Paper
 			</button>
-			<button
-				id="scissors"
-				class="btn-custom bg-black px-6 py-2 rounded text-lg hover:bg-neutral-800"
-			>
+			<button id="scissors" class="btn-custom px-6 py-2 rounded text-lg">
 				Scissors
 			</button>
 		</div>

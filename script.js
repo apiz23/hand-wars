@@ -1,14 +1,34 @@
-// Define image paths
+// Define of user and comp images
 const images = {
-	rock: "./assets/img/rock.png",
-	paper: "./assets/img/paper.png",
-	scissors: "./assets/img/scissors.png",
+	rock: {
+		user: "./assets/img/rock_user.png",
+		computer: "./assets/img/rock_comp.png",
+	},
+	paper: {
+		user: "./assets/img/paper_user.png",
+		computer: "./assets/img/paper_comp.png",
+	},
+	scissors: {
+		user: "./assets/img/scissors_user.png",
+		computer: "./assets/img/scissors_comp.png",
+	},
 };
 
 // Get DOM elements
 const userImage = document.getElementById("user-image");
 const computerImage = document.getElementById("computer-image");
 const resultDiv = document.getElementById("result");
+const userScoreDisplay = document.getElementById("user-score");
+const computerScoreDisplay = document.getElementById("computer-score");
+const resetButton = document.getElementById("reset-button");
+
+// Initialize scores from sessionStorage or set to 0 if not present
+let userScore = parseInt(sessionStorage.getItem("userScore")) || 0;
+let computerScore = parseInt(sessionStorage.getItem("computerScore")) || 0;
+
+// Update score display
+userScoreDisplay.textContent = userScore;
+computerScoreDisplay.textContent = computerScore;
 
 // Function to generate a random choice for the computer
 function getComputerChoice() {
@@ -26,8 +46,12 @@ function determineWinner(userChoice, computerChoice) {
 		(userChoice === "paper" && computerChoice === "rock") ||
 		(userChoice === "scissors" && computerChoice === "paper")
 	) {
+		userScore++;
+		sessionStorage.setItem("userScore", userScore);
 		return "You win!";
 	} else {
+		computerScore++;
+		sessionStorage.setItem("computerScore", computerScore);
 		return "Computer wins!";
 	}
 }
@@ -45,14 +69,38 @@ document
 
 // Main game function
 function playGame(userChoice) {
-	// Update user image
-	userImage.src = images[userChoice];
+	userImage.src = images[userChoice].user;
 
-	// Get computer choice
 	const computerChoice = getComputerChoice();
-	computerImage.src = images[computerChoice];
+	computerImage.src = images[computerChoice].computer;
 
-	// Determine the winner
 	const result = determineWinner(userChoice, computerChoice);
+
+	userScoreDisplay.textContent = userScore;
+	computerScoreDisplay.textContent = computerScore;
+
 	resultDiv.textContent = result;
 }
+
+// Function to reset scores
+function resetScores() {
+	// Clear scores in sessionStorage
+	sessionStorage.removeItem("userScore");
+	sessionStorage.removeItem("computerScore");
+
+	// Reset scores in variables
+	userScore = 0;
+	computerScore = 0;
+
+	// Update the score display
+	userScoreDisplay.textContent = userScore;
+	computerScoreDisplay.textContent = computerScore;
+
+	// Reset result text
+	resultDiv.textContent = "";
+
+	// Reset images to default (optional)
+	userImage.src = "./assets/img/rock_user.png";
+	computerImage.src = "./assets/img/rock_comp.png";
+}
+resetButton.addEventListener("click", resetScores);
