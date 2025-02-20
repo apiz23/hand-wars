@@ -1,19 +1,134 @@
+html,
 body {
-	font-family: "Lato", serif;
-	font-weight: 400;
+	overflow: hidden;
+	height: 100vh;
+	width: 100vw;
+	margin: 0;
+	padding: 0;
+	font-family: "Poppins", serif;
+	font-weight: 500;
 	font-style: normal;
-}
-
-.title {
-	font-weight: bold;
-	color: white;
-	-webkit-text-stroke: 2px #ff5f00;
 }
 
 .bg-custom {
 	background-image: url("./assets/img/bg-custom-3.svg");
 	background-size: cover;
 	background-repeat: no-repeat;
+	position: relative;
+	height: 100vh;
+}
+
+nav {
+	margin: 0 auto;
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	height: fit-content;
+	padding: 4px 16px;
+}
+
+nav img {
+	height: 40px;
+	width: 40px;
+	border-radius: 100px;
+}
+
+.icon {
+	padding: 5px;
+	display: block;
+	color: #00897b;
+}
+
+#reset-button {
+	padding: 2px 0;
+	background-color: transparent;
+	border: none;
+}
+
+.content {
+	min-height: fit-content;
+	color: white;
+	width: 100vw;
+	margin-top: -50px;
+}
+
+.content .title {
+	margin-bottom: 20px;
+	text-align: center;
+}
+
+.content .title h1 {
+	font-size: 4.5rem;
+	font-weight: bolder;
+	margin-bottom: 1px;
+	color: white;
+	-webkit-text-stroke: 2px #ff5f00;
+}
+
+.content .title p {
+	font-size: 1.25rem;
+	color: #757575;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(2, 1fr);
+	margin-top: 2.5rem;
+	margin-bottom: 2.5rem;
+	gap: 5rem;
+	color: black;
+	font-weight: 500;
+}
+
+.grid-container .user {
+	display: flex;
+	justify-content: start;
+	align-self: center;
+}
+
+.grid-container p {
+	text-align: center;
+	font-size: larger;
+	margin-top: -10px;
+}
+
+#user {
+	font-size: xx-large;
+	font-weight: bolder;
+}
+
+#side-content {
+	text-align: center;
+}
+
+#user-score,
+#computer-score {
+	font-weight: 600;
+}
+
+.grid-container .comp {
+	display: flex;
+	justify-content: end;
+	align-self: center;
+}
+
+#user-image,
+#computer-image {
+	height: 40vh;
+	width: 45vw;
+}
+
+.button-group {
+	display: flex;
+	justify-content: center;
+	gap: 10px;
+	color: white;
+}
+
+.button-group button {
+	padding: 2px 14px;
+	border-radius: 40px;
+	font-size: larger;
 }
 
 .btn-custom {
@@ -42,6 +157,21 @@ body {
 .btn-custom:active {
 	box-shadow: #ff5f00 2px 2px 0 0;
 	transform: translate(2px, 2px);
+}
+
+#result {
+	position: absolute;
+	top: 25%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	font-size: 1.5rem;
+	font-weight: 600;
+	color: white;
+	background: black;
+	padding: 12px 24px;
+	border-radius: 20px;
+	box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.2);
+	background-color: #002379;
 }
 
 @media (min-width: 768px) {

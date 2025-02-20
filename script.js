@@ -1,4 +1,4 @@
-// Define of user and comp images
+// Define user and computer images
 const images = {
 	rock: {
 		user: "./assets/img/rock_user.png",
@@ -14,7 +14,7 @@ const images = {
 	},
 };
 
-// Get DOM elements
+// Get all elements
 const userImage = document.getElementById("user-image");
 const computerImage = document.getElementById("computer-image");
 const resultDiv = document.getElementById("result");
@@ -22,7 +22,7 @@ const userScoreDisplay = document.getElementById("user-score");
 const computerScoreDisplay = document.getElementById("computer-score");
 const resetButton = document.getElementById("reset-button");
 
-// Initialize scores from sessionStorage or set to 0 if not present
+// Initialize scores
 let userScore = parseInt(sessionStorage.getItem("userScore")) || 0;
 let computerScore = parseInt(sessionStorage.getItem("computerScore")) || 0;
 
@@ -33,8 +33,7 @@ computerScoreDisplay.textContent = computerScore;
 // Function to generate a random choice for the computer
 function getComputerChoice() {
 	const choices = ["rock", "paper", "scissors"];
-	const randomIndex = Math.floor(Math.random() * choices.length);
-	return choices[randomIndex];
+	return choices[Math.floor(Math.random() * choices.length)];
 }
 
 // Function to determine the winner
@@ -56,22 +55,11 @@ function determineWinner(userChoice, computerChoice) {
 	}
 }
 
-// Event listeners for buttons
-document
-	.getElementById("rock")
-	.addEventListener("click", () => playGame("rock"));
-document
-	.getElementById("paper")
-	.addEventListener("click", () => playGame("paper"));
-document
-	.getElementById("scissors")
-	.addEventListener("click", () => playGame("scissors"));
-
 // Main game function
 function playGame(userChoice) {
-	userImage.src = images[userChoice].user;
-
 	const computerChoice = getComputerChoice();
+
+	userImage.src = images[userChoice].user;
 	computerImage.src = images[computerChoice].computer;
 
 	const result = determineWinner(userChoice, computerChoice);
@@ -82,25 +70,29 @@ function playGame(userChoice) {
 	resultDiv.textContent = result;
 }
 
+// Event listeners for game choices
+["rock", "paper", "scissors"].forEach((choice) => {
+	document
+		.getElementById(choice)
+		.addEventListener("click", () => playGame(choice));
+});
+
 // Function to reset scores
 function resetScores() {
-	// Clear scores in sessionStorage
 	sessionStorage.removeItem("userScore");
 	sessionStorage.removeItem("computerScore");
 
-	// Reset scores in variables
 	userScore = 0;
 	computerScore = 0;
 
-	// Update the score display
 	userScoreDisplay.textContent = userScore;
 	computerScoreDisplay.textContent = computerScore;
+	resultDiv.textContent = "Choose your move!";
 
-	// Reset result text
-	resultDiv.textContent = "";
-
-	// Reset images to default (optional)
+	// Reset images to default
 	userImage.src = "./assets/img/rock_user.png";
 	computerImage.src = "./assets/img/rock_comp.png";
 }
+
+// Reset button event listener
 resetButton.addEventListener("click", resetScores);

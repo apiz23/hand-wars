@@ -7,80 +7,52 @@
 		<link rel="stylesheet" href="style.css" />
 		<link rel="icon" type="image/png" href="./assets/HW.png" />
 
-		<script defer src="https://cdn.tailwindcss.com"></script>
 		<script defer src="script.js"></script>
 		<link rel="preconnect" href="https://fonts.googleapis.com" />
 		<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
 		<link
-			href="https://fonts.googleapis.com/css2?family=Lato:ital,wght@0,100;0,300;0,400;0,700;0,900;1,100;1,300;1,400;1,700;1,900&display=swap"
+			href="https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
 			rel="stylesheet"
 		/>
 	</head>
-	<body class="min-h-screen bg-gray-800 bg-custom relative">
-		<header>
-			<div
-				class="mx-auto flex h-16 items-center gap-8 px-4 sm:px-6 lg:px-8 justify-between"
-			>
-				<a class="block text-teal-600" href="#">
-					<span class="sr-only">Home</span>
-					<img src="./assets/HW.png" alt="logo" class="h-10 w-10 rounded-full" />
-				</a>
-
-				<div class="flex items-center justify-end md:justify-between">
-					<div class="flex items-center gap-4">
-						<button id="reset-button" class="py-2 rounded text-lg">
-							<img src="./assets/img/reset.png" alt="reset btn" class="h-10 w-10" />
-						</button>
+	<body class="bg-custom">
+		<nav>
+			<div class="icon">
+				<img src="./assets/HW.png" alt="logo" />
+			</div>
+			<button id="reset-button">
+				<img src="./assets/img/reset.png" alt="reset btn" />
+			</button>
+		</nav>
+		<div class="content">
+			<div class="title">
+				<h1>Hand Wars</h1>
+				<p>Ready to Rock Paper Scissors</p>
+			</div>
+			<div class="grid-container">
+				<div class="user">
+					<div id="side-content">
+						<p id="user">You</p>
+						<p>Score: <span id="user-score">0</span></p>
+						<img id="user-image" src="./assets/img/rock_user.png" />
 					</div>
 				</div>
-			</div>
-		</header>
-		<div class="min-h-fit text-white rounded-lg mx-auto">
-			<div class="mb-4 space-y-4">
-				<h1 class="text-7xl font-extrabold text-center title tracking-wider">Hand Wars</h1>
-				<p class="text-xl text-muted-foreground text-center text-neutral-900/60">
-					Ready to Rock Paper Scissors
-				</p>
-			</div>
-			<div class="grid grid-cols-2 my-10 gap-20 text-black font-medium">
-				<div class="flex justify-start items-center rounded-lg">
-					<div class="text-center space-y-3">
-						<p class="text-xl">You</p>
-						<p class="text-lg font-bold">Score: <span id="user-score">0</span></p>
-						<img
-							id="user-image"
-							src="./assets/img/rock_user.png"
-							class="h-[40vh] w-[45vw]"
-						/>
-					</div>
-				</div>
-				<div class="flex justify-end items-center rounded-lg">
-					<div class="text-center space-y-5">
-						<p class="text-xl">Opponent</p>
-						<p class="text-xl">Computer Score: <span id="computer-score">0</span></p>
-						<img
-							id="computer-image"
-							src="./assets/img/rock_comp.png"
-							class="h-[40vh] w-[45vw]"
-						/>
+				<div class="comp">
+					<div id="side-content">
+						<p id="user">Opponent</p>
+						<p>Computer Score: <span id="computer-score">0</span></p>
+						<img id="computer-image" src="./assets/img/rock_comp.png" />
 					</div>
 				</div>
 			</div>
 		</div>
 
-		<p
-			id="result"
-			class="absolute top-1/4 left-1/2 transform -translate-x-1/2 -translate-y-1/2 text-2xl font-semibold text-white bg-black px-6 py-2 rounded-lg shadow-md"
-		></p>
+		<p id="result"></p>
 
-		<div class="flex justify-center gap-4 mt-4 text-white">
-			<button id="rock" class="btn-custom px-6 py-2 rounded text-lg">Rock</button>
-			<button id="paper" class="btn-custom px-6 py-2 rounded text-lg">
-				Paper
-			</button>
-			<button id="scissors" class="btn-custom px-6 py-2 rounded text-lg">
-				Scissors
-			</button>
+		<div class="button-group">
+			<button id="rock" class="btn-custom">Rock</button>
+			<button id="paper" class="btn-custom">Paper</button>
+			<button id="scissors" class="btn-custom">Scissors</button>
 		</div>
 	</body>
 </html>
